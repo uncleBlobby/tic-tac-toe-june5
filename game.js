@@ -1,7 +1,11 @@
-
+//game Object controls flow of game
+//called once at start of game
 
 const game = (() => {
 
+    //i feel like this variable declaration is at least partly responsible for the problem....
+    //the variable is resetting to playerX every time, whether it's playerX or playerO who is currentPlayer at the time claimCell is called
+    //solution:  store lastPlayer and nextPlayer instead of currentPlayer ??
     var currentPlayer = playerX;
 
     //draw initial empty game board and send to displayController
