@@ -1,7 +1,7 @@
--[] 1. set up the project with HTML, CSS and Javascript files (init git repo)
+-[x] 1. set up the project with HTML, CSS and Javascript files (init git repo)
 
--[] 2. store gameboard as an array inside of a gameboard object.  
-    -[] 2.b. players stored in objects
+-[x] 2. store gameboard as an array inside of a gameboard object.  
+    -[x] 2.b. players stored in objects
     -[] 2.c. object to control the flow of the game itself
 
 -[] 3. main goal is to have as LITTLE GLOBAL CODE AS POSSIBLE.  put everything inside of a module or a factory!
