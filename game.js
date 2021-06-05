@@ -14,6 +14,10 @@ const game = (() => {
     //add listeners to board cells (click events to claim cells)
     displayController.addListeners();
     //change active player after each move
+
+    const setActivePlayer = () => {
+
+    }
     
     const changePlayer = () => {
         switch(currentPlayer) {
@@ -35,6 +39,6 @@ const game = (() => {
     //check gameboard state for winning set
     //trigger win-loss state and send to displayController
 
-    return { currentPlayer, changePlayer }; 
+    return { currentPlayer, setActivePlayer, changePlayer }; 
 
 })();
