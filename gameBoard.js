@@ -8,7 +8,18 @@ const gameBoard = (() => {
                     "empty", "empty", "empty",
                     "empty", "empty", "empty",
                     "empty", "empty", "empty"
-                    ]
+                    ];
 
-    return { state };
+
+    
+    //function to control claiming of cells, depending on active player
+    const claimCell = (e) => {
+        console.log(`next player to move: ${game.currentPlayer.marker}`);
+        //set state of target cell to owned by current player
+        state[e.originalTarget.id] = game.currentPlayer.marker;
+        displayController.drawBoardAfterTurn();
+        game.changePlayer();
+    }
+
+    return { state, claimCell };
 })();
