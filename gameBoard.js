@@ -12,9 +12,15 @@ const gameBoard = (() => {
     //function to control claiming of cells, depending on active player
     const claimCell = (e) => {
         //THIS CONSOLE LOG ALWAYS SHOWS PLAYER X, EVEN THOUGH THE CURRENTPLAYER HAS CHANGED IMMEDIATELY BEFORE CALLING CLAIMCELL  <--- PROBLEM
-        console.log(`next player to move: ${game.currentPlayer.marker}`);
+        //console.log(`next player to move: ${game.currentPlayer.marker}`);
         //set state of target cell to owned by current player
-        state[e.originalTarget.id] = game.currentPlayer.marker;
+        if(playerX.isActive == true){
+            state[e.originalTarget.id] = playerX.marker;
+        }
+        if(playerO.isActive == true){
+            state[e.originalTarget.id] = playerO.marker;
+        }
+        //state[e.originalTarget.id] = game.currentPlayer.marker;
         //update displayController with new board draw
         displayController.drawBoardAfterTurn();
         //change to next player
