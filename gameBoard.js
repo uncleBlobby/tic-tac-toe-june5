@@ -38,9 +38,12 @@ const gameBoard = (() => {
     //function to reset gameState after win or draw
 
     const resetGameState = () => {
+        displayController.eraseGame();
         for (let i =0; i < 9; i++){
             state[i] = "empty"
         }
+        displayController.drawEmptyBoard();
+        displayController.addListeners();
     }
 
     return { state, claimCell, resetGameState };

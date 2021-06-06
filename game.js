@@ -26,13 +26,15 @@ const game = (() => {
 
     //check for draw
     const checkDraw = (state) => {
-    
-
+        //condition: if any state is "empty"
+        const isAnyEmpty = (element) => element == "empty";
+        return !state.some(isAnyEmpty);
     }
     
     //check gameboard state for winning set
     
     const checkWinners = (state, player, marker) => {
+        if(checkDraw(state) == false){
         if  ( 
                ((state[0] != "empty") && (state[0] == marker) && (state[1] == marker) && (state[2] == marker))
             || ((state[3] != "empty") && (state[3] == marker) && (state[4] == marker) && (state[5] == marker))
@@ -48,10 +50,16 @@ const game = (() => {
                     console.log(`and the winner is: ${gameWinner}`);
                     displayController.drawEndGamePopup(gameWinner);
                 }
+            }
+        if(checkDraw(state) == true){
+            let gameWinner = "nobody";
+            console.log(`and the winner is: ${gameWinner}`);
+            displayController.drawEndGamePopup(gameWinner);
+        }
     }
     
     //trigger win-loss state and send to displayController
 
-    return { changePlayer, checkWinners }; 
+    return { changePlayer, checkWinners, checkDraw }; 
 
 })();
