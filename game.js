@@ -34,7 +34,7 @@ const game = (() => {
     //check gameboard state for winning set
     
     const checkWinners = (state, player, marker) => {
-        if(checkDraw(state) == false){
+        let gameOver = false;
         if  ( 
                ((state[0] != "empty") && (state[0] == marker) && (state[1] == marker) && (state[2] == marker))
             || ((state[3] != "empty") && (state[3] == marker) && (state[4] == marker) && (state[5] == marker))
@@ -47,11 +47,12 @@ const game = (() => {
             )
                 {
                     let gameWinner = player;
+                    gameOver = true;
                     console.log(`and the winner is: ${gameWinner}`);
                     displayController.drawEndGamePopup(gameWinner);
                 }
-            }
-        if(checkDraw(state) == true){
+        
+        if((checkDraw(state) == true) && (gameOver == false)){
             let gameWinner = "nobody";
             console.log(`and the winner is: ${gameWinner}`);
             displayController.drawEndGamePopup(gameWinner);

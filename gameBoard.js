@@ -14,10 +14,10 @@ const gameBoard = (() => {
         //condition to prevent claiming of any non-empty cells
 
         if(state[e.originalTarget.id] == "empty"){
-            if(playerX.isActive == true){
+            if((playerX.isActive == true) && (playerX.isAI == false)){
                 state[e.originalTarget.id] = playerX.marker;
             }
-            if(playerO.isActive == true){
+            if((playerO.isActive == true) && (playerO.isAI == false)){
                 state[e.originalTarget.id] = playerO.marker;
             }
             //update displayController with new board draw
@@ -31,7 +31,15 @@ const gameBoard = (() => {
             }
             //change to next player
             game.changePlayer();
-            aiController.chooseCell(state);
+            //if playerO is AI, make AI move
+            if(playerO.isAI == true){
+                aiController.chooseCell(state);
+                console.log(computerChoice);
+                console.log(state[computerChoice]);
+                state[computerChoice] = playerO.marker;
+                displayController.drawBoardAfterTurn();
+                game.changePlayer();
+            }
         }
     }
 

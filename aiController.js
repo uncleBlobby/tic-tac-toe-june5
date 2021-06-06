@@ -28,6 +28,11 @@ const aiController = (() => {
     }
 
 //write function for computer to make a play
+    //done
+
+//write minimax algorithm for computer AI
+
+    //const isMovesLeft = 
 
 
 
