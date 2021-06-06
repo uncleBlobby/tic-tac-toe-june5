@@ -4,6 +4,12 @@ let gameBoardDisplay = document.getElementById("gameBoard");
 const displayController = (() => {
     //create empty array of cells
     let cells = [];
+    //erase gameBoard for reset
+    const eraseGame = () => {
+        while(gameBoardDisplay.firstChild) {
+            gameBoardDisplay.removeChild(gameBoardDisplay.lastChild);
+        }
+    }
     //draw empty board for initial game state
     const drawEmptyBoard = () => {
         //number of cells on a board is 9, so loop through 0-8
@@ -54,8 +60,14 @@ const displayController = (() => {
         let closePopupBTN = document.getElementsByClassName("close")[0];
         let winnerAlert = document.getElementById("winnerAlert");
         let playAgainPrompt = document.getElementById("playAgainPrompt");
+        let yesButton = document.getElementById("yesButton");
+
         winnerAlert.innerHTML = `Winner: ${winner}`;
         playAgainPrompt.innerHTML = `Play Again?`;
+
+        yesButton.addEventListener('click', gameBoard.resetGameState);
+        yesButton.onclick = function() { endGamePopup.style.display = "none"; }
+        noButton.onclick = function() { endGamePopup.style.display = "none"; }
         endGamePopup.style.display = "block";
         closePopupBTN.onclick = function() {
             endGamePopup.style.display = "none";
@@ -66,5 +78,5 @@ const displayController = (() => {
             }
         }
     }
-    return { drawEmptyBoard, addListeners, drawBoardAfterTurn, drawEndGamePopup };
+    return { eraseGame, drawEmptyBoard, addListeners, drawBoardAfterTurn, drawEndGamePopup };
 })();
