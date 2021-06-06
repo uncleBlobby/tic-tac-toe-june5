@@ -3,33 +3,26 @@
 
 const game = (() => {
 
-    //i feel like this variable declaration is at least partly responsible for the problem....
-    //the variable is resetting to playerX every time, whether it's playerX or playerO who is currentPlayer at the time claimCell is called
-    //solution:  store lastPlayer and nextPlayer instead of currentPlayer ??
-    var currentPlayer = playerX;
-
     //draw initial empty game board and send to displayController
     displayController.drawEmptyBoard();
 
     //add listeners to board cells (click events to claim cells)
     displayController.addListeners();
     //change active player after each move
-
-    const setActivePlayer = () => {
-
-    }
     
     const changePlayer = () => {
-        switch(currentPlayer) {
-            case playerX :
-                currentPlayer = playerO;
-                break;
-            case playerO :
-                currentPlayer = playerX;
-                break;
+        if(playerX.isActive == true){
+            playerX.isActive = false;
+            playerO.isActive = true;
+            console.log(`swapped players`);
+        } else if(playerO.isActive == true){
+            playerO.isActive = false;
+            playerX.isActive = true;
+            console.log(`swapped players back`);
         }
-        console.log(`next player to move: ${currentPlayer.marker}`);
-        return currentPlayer;
+        console.log(`current playerX isActive: ${playerX.isActive}`);
+        console.log(`current playerO isActive: ${playerO.isActive}`);
+
     }
 
 
@@ -39,6 +32,6 @@ const game = (() => {
     //check gameboard state for winning set
     //trigger win-loss state and send to displayController
 
-    return { currentPlayer, setActivePlayer, changePlayer }; 
+    return { changePlayer }; 
 
 })();
