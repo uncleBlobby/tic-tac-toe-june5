@@ -23,6 +23,12 @@ const game = (() => {
         console.log(`current playerX isActive: ${playerX.isActive}`);
         console.log(`current playerO isActive: ${playerO.isActive}`);
     }
+
+    //check for draw
+    const checkDraw = (state) => {
+    
+
+    }
     
     //check gameboard state for winning set
     
@@ -37,11 +43,11 @@ const game = (() => {
             || ((state[0] != "empty") && (state[0] == marker) && (state[4] == marker) && (state[8] == marker))
             || ((state[2] != "empty") && (state[2] == marker) && (state[4] == marker) && (state[6] == marker))
             )
-        {
-            let gameWinner = player;
-            console.log(`and the winner is: ${gameWinner}`);
-            displayController.drawEndGamePopup(gameWinner);
-        }
+                {
+                    let gameWinner = player;
+                    console.log(`and the winner is: ${gameWinner}`);
+                    displayController.drawEndGamePopup(gameWinner);
+                }
     }
     
     //trigger win-loss state and send to displayController
