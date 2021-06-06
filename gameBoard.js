@@ -11,20 +11,35 @@ const gameBoard = (() => {
                     ];
     //function to control claiming of cells, depending on active player
     const claimCell = (e) => {
-        //THIS CONSOLE LOG ALWAYS SHOWS PLAYER X, EVEN THOUGH THE CURRENTPLAYER HAS CHANGED IMMEDIATELY BEFORE CALLING CLAIMCELL  <--- PROBLEM
-        //console.log(`next player to move: ${game.currentPlayer.marker}`);
-        //set state of target cell to owned by current player
-        if(playerX.isActive == true){
-            state[e.originalTarget.id] = playerX.marker;
+        //condition to prevent claiming of any non-empty cells
+        if(state[e.originalTarget.id] == "empty"){
+            if(playerX.isActive == true){
+                state[e.originalTarget.id] = playerX.marker;
+            }
+            if(playerO.isActive == true){
+                state[e.originalTarget.id] = playerO.marker;
+            }
+            //update displayController with new board draw
+            displayController.drawBoardAfterTurn();
+            //check for winning moves
+            if(playerX.isActive == true){
+                game.checkWinners(state, playerX.id, playerX.marker);
+            }
+            if(playerO.isActive == true){
+                game.checkWinners(state, playerO.id, playerO.marker);
+            }
+            //change to next player
+            game.changePlayer();
         }
-        if(playerO.isActive == true){
-            state[e.originalTarget.id] = playerO.marker;
-        }
-        //state[e.originalTarget.id] = game.currentPlayer.marker;
-        //update displayController with new board draw
-        displayController.drawBoardAfterTurn();
-        //change to next player
-        game.changePlayer();
     }
-    return { state, claimCell };
+
+    //function to reset gameState after win or draw
+
+    const resetGameState = () => {
+        for (let i =0; i < 9; i++){
+            state[i] = "empty"
+        }
+    }
+
+    return { state, claimCell, resetGameState };
 })();
