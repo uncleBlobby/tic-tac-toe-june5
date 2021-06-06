@@ -47,6 +47,24 @@ const displayController = (() => {
             //add to each cell a class based on the current gamestate
             cells[i].classList.add(`${currentGameState[i]}`)
         }
+    };
+    //draw modal popup to show game winner and options to play again
+    const drawEndGamePopup = (winner) => {
+        let endGamePopup = document.getElementById("endGamePopup");
+        let closePopupBTN = document.getElementsByClassName("close")[0];
+        let winnerAlert = document.getElementById("winnerAlert");
+        let playAgainPrompt = document.getElementById("playAgainPrompt");
+        winnerAlert.innerHTML = `Winner: ${winner}`;
+        playAgainPrompt.innerHTML = `Play Again?`;
+        endGamePopup.style.display = "block";
+        closePopupBTN.onclick = function() {
+            endGamePopup.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == endGamePopup) {
+                endGamePopup.style.display = "none";
+            }
+        }
     }
-    return { drawEmptyBoard, addListeners, drawBoardAfterTurn };
+    return { drawEmptyBoard, addListeners, drawBoardAfterTurn, drawEndGamePopup };
 })();

@@ -22,16 +22,30 @@ const game = (() => {
         }
         console.log(`current playerX isActive: ${playerX.isActive}`);
         console.log(`current playerO isActive: ${playerO.isActive}`);
-
     }
-
-
-    //check player moves for validity against gameboard state
-    //update gameboard state after each move and send to displayController
-
+    
     //check gameboard state for winning set
+    
+    const checkWinners = (state, player, marker) => {
+        if  ( 
+               ((state[0] != "empty") && (state[0] == marker) && (state[1] == marker) && (state[2] == marker))
+            || ((state[3] != "empty") && (state[3] == marker) && (state[4] == marker) && (state[5] == marker))
+            || ((state[6] != "empty") && (state[6] == marker) && (state[7] == marker) && (state[8] == marker))
+            || ((state[0] != "empty") && (state[0] == marker) && (state[3] == marker) && (state[6] == marker))
+            || ((state[1] != "empty") && (state[1] == marker) && (state[4] == marker) && (state[7] == marker))
+            || ((state[2] != "empty") && (state[2] == marker) && (state[5] == marker) && (state[8] == marker))
+            || ((state[0] != "empty") && (state[0] == marker) && (state[4] == marker) && (state[8] == marker))
+            || ((state[2] != "empty") && (state[2] == marker) && (state[4] == marker) && (state[6] == marker))
+            )
+        {
+            let gameWinner = player;
+            console.log(`and the winner is: ${gameWinner}`);
+            displayController.drawEndGamePopup(gameWinner);
+        }
+    }
+    
     //trigger win-loss state and send to displayController
 
-    return { changePlayer }; 
+    return { changePlayer, checkWinners }; 
 
 })();

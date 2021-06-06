@@ -30,3 +30,97 @@ body {
 .O {
     background-color: blue;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color:#292929;
+    background-color: rgba(29, 29, 29, 0.4);
+}
+
+.modal-content {
+    background-color:rgba(29, 29, 29, 0.7);
+    margin: 8% auto;
+    padding: 20px;
+    border: 1px solid white;
+    width: 300px;
+    height: 300px;
+    color: white;
+}
+
+.close {
+    color: grey;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color:white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#winnerAlert {
+    margin-top: 30px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 40px;
+}
+
+#playAgainPrompt {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 24px;
+}
+
+#buttonContainer {
+    display:grid;
+    align-content: center;
+    margin-top:15%;
+    margin-left: 25%;
+    width: 100px;
+    height: 75px;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    gap: 20px;
+}
+
+.menuBTN {
+    display:flex;
+    height: 45px;
+    width: 55px;
+    border: 1px solid white;
+    margin-left: 10%;
+    justify-content: center;
+    text-align: center;
+    padding-top: 25px;
+}
+
+.menuBTN:hover {
+
+}
+
+#yesButton {
+
+}
+
+#yesButton:hover {
+    background-color: green;
+}
+
+
+#noButton {
+
+}
+
+#noButton:hover {
+    background-color: red;
+}
