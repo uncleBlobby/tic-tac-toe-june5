@@ -12,6 +12,7 @@ const gameBoard = (() => {
     //function to control claiming of cells, depending on active player
     const claimCell = (e) => {
         //condition to prevent claiming of any non-empty cells
+
         if(state[e.originalTarget.id] == "empty"){
             if(playerX.isActive == true){
                 state[e.originalTarget.id] = playerX.marker;
@@ -30,6 +31,7 @@ const gameBoard = (() => {
             }
             //change to next player
             game.changePlayer();
+            aiController.chooseCell(state);
         }
     }
 
