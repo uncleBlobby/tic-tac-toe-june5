@@ -1,6 +1,5 @@
 //write IIFE module for gameBoard object
 //store gameBoard state as array inside of the gameBoard object
-
 const gameBoard = (() => {
     //state holds the status of each gameboard cell from cell[0] - cell[8]
     //initialized to "empty" (later will be claimed "x" or "o")
@@ -12,7 +11,6 @@ const gameBoard = (() => {
     //function to control claiming of cells, depending on active player
     const claimCell = (e) => {
         //condition to prevent claiming of any non-empty cells
-
         if(state[e.originalTarget.id] == "empty"){
             if((playerX.isActive == true) && (playerX.isAI == false)){
                 state[e.originalTarget.id] = playerX.marker;
@@ -42,17 +40,14 @@ const gameBoard = (() => {
             }
         }
     }
-
     //function to reset gameState after win or draw
-
     const resetGameState = () => {
         displayController.eraseGame();
-        for (let i =0; i < 9; i++){
-            state[i] = "empty"
-        }
+            for (let i =0; i < 9; i++){
+                state[i] = "empty"
+            }
         displayController.drawEmptyBoard();
         displayController.addListeners();
     }
-
     return { state, claimCell, resetGameState };
 })();

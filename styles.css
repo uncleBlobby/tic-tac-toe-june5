@@ -119,18 +119,9 @@ body {
     animation-iteration-count: 1;
 }
 
-#yesButton {
-
-}
-
 #yesButton:hover {
     background-color: green;
     box-shadow: 1px 1px 1px 1px rgba(0, 128, 0, 0.5), -1px -1px 1px 1px rgba(0, 128, 0, 0.5);
-}
-
-
-#noButton {
-
 }
 
 #noButton:hover {

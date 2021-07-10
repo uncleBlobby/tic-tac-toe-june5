@@ -1,16 +1,12 @@
 //game Object controls flow of game
 //called once at start of game
-
 const game = (() => {
-
     //draw initial empty game board and send to displayController
     displayController.drawEmptyBoard();
-
     //add listeners to board cells (click events to claim cells)
     displayController.addListeners();
     //change active player after each move
-    
-    const changePlayer = () => {
+        const changePlayer = () => {
         if(playerX.isActive == true){
             playerX.isActive = false;
             playerO.isActive = true;
@@ -23,16 +19,13 @@ const game = (() => {
         console.log(`current playerX isActive: ${playerX.isActive}`);
         console.log(`current playerO isActive: ${playerO.isActive}`);
     }
-
     //check for draw
     const checkDraw = (state) => {
         //condition: if any state is "empty"
         const isAnyEmpty = (element) => element == "empty";
         return !state.some(isAnyEmpty);
     }
-    
     //check gameboard state for winning set
-    
     const checkWinners = (state, player, marker) => {
         let gameOver = false;
         if  ( 
@@ -51,16 +44,12 @@ const game = (() => {
                     console.log(`and the winner is: ${gameWinner}`);
                     displayController.drawEndGamePopup(gameWinner);
                 }
-        
-        if((checkDraw(state) == true) && (gameOver == false)){
-            let gameWinner = "nobody";
-            console.log(`and the winner is: ${gameWinner}`);
-            displayController.drawEndGamePopup(gameWinner);
-        }
+            if((checkDraw(state) == true) && (gameOver == false)){
+                let gameWinner = "nobody";
+                console.log(`and the winner is: ${gameWinner}`);
+                displayController.drawEndGamePopup(gameWinner);
+            }
     }
-    
     //trigger win-loss state and send to displayController
-
     return { changePlayer, checkWinners, checkDraw }; 
-
 })();
